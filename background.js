@@ -14,13 +14,3 @@ function openRandomLink() {
 chrome.runtime.onInstalled.addListener(openRandomLink);
 
 chrome.runtime.onStartup.addListener(openRandomLink);
-
-let hasOpenedWindow = false;
-
-if (!hasOpenedWindow) {
-    chrome.windows.create({
-        url: randomLink,
-        focused: true
-    });
-    hasOpenedWindow = true;
-}
