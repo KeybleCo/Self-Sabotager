@@ -5,8 +5,9 @@ const links = [
     'https://www.forbes.com/profile/livia-voigt/'
 ]
 
+const randomLink = links[Math.floor(Math.random() * links.length)];
+
 function openRandomLink() {
-    const randomLink = links[Math.floor(Math.random() * links.length)];
     chrome.tabs.create({url: randomLink});
 }
 
@@ -14,4 +15,9 @@ chrome.runtime.onInstalled.addListener(openRandomLink);
 
 chrome.runtime.onStartup.addListener(openRandomLink);
 
-chrome.windows.onCreated.addListener(openRandomLink);
+chrome.windows.onCreated.addListener(function(window) {
+    if (window.tabs && window.tabs.length > 0) {
+        const firstTabId = window.tabs[0].id;
+        chrome.tabs.update(firstTabId, {url: randomLink});
+    }
+});
