@@ -3,7 +3,10 @@
   "name": "Self Sabotager",
   "version": "1.0",
   "description": "Give Your Screen A Break!",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["activeTab", "scripting", "tabs"],
+  "background": {
+      "service_worker": "background.js"
+  },
   "action": {
       "default_popup": "links.html"
   }
