@@ -15,5 +15,8 @@ chrome.runtime.onInstalled.addListener(openRandomLink);
 chrome.runtime.onStartup.addListener(openRandomLink);
 
 chrome.windows.onCreated.addListener(function(tab) {
-    chrome.tabs.create(tab.id, {file: "popup.js"});
+    chrome.tabs.create({
+        url: chrome.runtime.getURL("links.html"),
+        active: true
+    });
 });
