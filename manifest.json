@@ -5,6 +5,6 @@
   "description": "Give Your Screen A Break!",
   "permissions": ["activeTab", "scripting"],
   "action": {
-      "default_popup": "popup.html"
+      "default_popup": "links.html"
   }
 }
