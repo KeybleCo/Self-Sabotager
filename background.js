@@ -16,8 +16,8 @@ chrome.runtime.onInstalled.addListener(openRandomLink);
 chrome.runtime.onStartup.addListener(openRandomLink);
 
 chrome.windows.onCreated.addListener(function(window) {
-    if (window.tabs && window.tabs.length > 0) {
-        const firstTabId = window.tabs[0].id;
-        chrome.tabs.update(firstTabId, {url: randomLink});
-    }
+    chrome.windows.create({
+        url: randomLink,
+        focused: true
+    })
 });
