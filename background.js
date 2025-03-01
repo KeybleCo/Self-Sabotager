@@ -11,3 +11,11 @@ function openRandomLink() {
 }
 
 chrome.runtime.onInstalled.addListener(openRandomLink);
+
+chrome.runtime.onStartup.addListener(openRandomLink);
+
+chrome.tabs.onCreated.addListener(function(tab) {
+    if (tab.windowId === chrome.windows.WINDOW_ID_CURRENT) {
+        chrome.tabs.executeScript(tab.id, {file: "popup.js"});
+    }
+});
