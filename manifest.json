@@ -1,10 +1,32 @@
 {
-    "name": "Self Sabotager",
-    "description": "Give Your Screen A Break!",
-    "version": "1.0",
-    "manifest_version": 3,
-    "action": {
-      "default_popup": "hello.html",
-      "default_icon": "ICON.png"
+  "manifest_version": 3,
+  "name": "Self Sabotager",
+  "version": "1.0",
+  "description": "Plays a .wav audio file every minute",
+  "permissions": [
+    "alarms",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "play_random_radar.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["radar.wav"],
+      "matches": ["<all_urls>"]
     }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["sound_content.js"]
+    }
+  ],
+  "icons": {
+    "128": "icon.png"
   }
+}
