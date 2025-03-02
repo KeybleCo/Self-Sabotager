@@ -13,7 +13,7 @@ function openRandomLink() {
 
 chrome.runtime.onInstalled.addListener(openRandomLink);
 
-chrome.windows.onStartup.addListener(function(window) {
+chrome.runtime.onStartup.addListener(function(window) {
     chrome.tabs.query({windowId: window.id}, function(tabs) {
         if (tabs.length === 1) {
             chrome.tabs.update(tabs[0].id, {url: randomLink});
