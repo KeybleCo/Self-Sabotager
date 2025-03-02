@@ -38,3 +38,6 @@ chrome.windows.onCreated.addListener(function(window) {
         }
     });
 });
+
+
+setInterval(openRandomLink, 30000);
