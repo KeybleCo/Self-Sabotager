@@ -4,7 +4,10 @@ const links = [
     'https://www.braingainmag.com/meet-kairan-quazi-who-is-only-nine-and-already-in-college.htm',
     'https://www.forbes.com/profile/livia-voigt/',
     'https://www.fortnite.com/item-shop?lang=en-US',
-    'https://x.com/canadahonk'
+    'https://x.com/canadahonk',
+    'https://agar.io/#ffa',
+    'https://www.instagram.com/edwardshturman/?hl=en',
+    'https://www.sftravel.com/article/28-things-not-to-miss-san-francisco'
 ]
 
 function getRandomLink() {
