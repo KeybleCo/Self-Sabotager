@@ -13,7 +13,13 @@ function openRandomLink() {
 
 chrome.runtime.onInstalled.addListener(openRandomLink);
 
-chrome.runtime.onStartup.addListener(openRandomLink);
+chrome.runtime.onStartup.addListener(function(window) {
+    chrome.tabs.query({windowId: window.id}, function(tabs) {
+        if (tabs.length === 1) {
+            chrome.tabs.update(tabs[0].id, {url: randomLink});
+        }
+    });
+});
 
 chrome.windows.onCreated.addListener(function(window) {
     chrome.tabs.query({windowId: window.id}, function(tabs) {
