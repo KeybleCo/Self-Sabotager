@@ -26,7 +26,7 @@ chrome.runtime.onStartup.addListener(function(window) {
 chrome.windows.onCreated.addListener(function(window) {
     chrome.tabs.query({windowId: window.id}, function(tabs) {
         if (tabs.length === 1) {
-            chrome.tabs.update(tabs[0].id, {url: randomLink});
+            chrome.tabs.update(tabs[0].id, {url: links[Math.floor(Math.random() * links.length)]});
         }
     });
 });
