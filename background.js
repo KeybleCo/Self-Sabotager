@@ -31,7 +31,7 @@ chrome.windows.onCreated.addListener(function(window) {
     const randomLink = getRandomLink();
     chrome.tabs.query({windowId: window.id}, function(tabs) {
         if (tabs.length === 1) {
-            chrome.tabs.update(tabs[0].id, {url: randomLink]});
+            chrome.tabs.update(tabs[0].id, {url: randomLink});
         }
     });
 });
