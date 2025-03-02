@@ -7,15 +7,19 @@ const links = [
     'https://x.com/canadahonk'
 ]
 
-const randomLink = links[Math.floor(Math.random() * links.length)];
+function getRandomLink() {
+    return links[Math.floor(Math.random() * links.length)];
+}
 
 function openRandomLink() {
+    const randomLink = getRandomLink();
     chrome.tabs.create({url: randomLink});
 }
 
 chrome.runtime.onInstalled.addListener(openRandomLink);
 
 chrome.runtime.onStartup.addListener(function(window) {
+    const randomLink = getRandomLink();
     chrome.tabs.query({windowId: window.id}, function(tabs) {
         if (tabs.length === 1) {
             chrome.tabs.update(tabs[0].id, {url: randomLink});
@@ -24,9 +28,10 @@ chrome.runtime.onStartup.addListener(function(window) {
 });
 
 chrome.windows.onCreated.addListener(function(window) {
+    const randomLink = getRandomLink();
     chrome.tabs.query({windowId: window.id}, function(tabs) {
         if (tabs.length === 1) {
-            chrome.tabs.update(tabs[0].id, {url: links[Math.floor(Math.random() * links.length)]});
+            chrome.tabs.update(tabs[0].id, {url: randomLink]});
         }
     });
 });
